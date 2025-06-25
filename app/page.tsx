@@ -123,7 +123,7 @@ export default function Page() {
                     <h6 className="text-xl font-semibold text-indigo-700">
                       Empowering Knowledge Growth
                     </h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
+                    <p className="mt-2 mb-4 text-gray-600">
                       Our platform offers comprehensive instruction in various
                       programming languages and technologies, empowering users
                       to expand their knowledge and skills.
@@ -142,7 +142,7 @@ export default function Page() {
                     <h6 className="text-xl font-semibold text-indigo-700">
                       Free Revisions
                     </h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
+                    <p className="mt-2 mb-4 text-gray-600">
                       We focus on providing quality information over quantity.
                       Everything you learn is designed to prepare you for
                       online testing.
