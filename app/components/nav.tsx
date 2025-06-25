@@ -1,38 +1,41 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navItems = {
-  '/': {
-    name: 'home',
-  },
-  '': {
-    name: 'blog',
-  },
-  '': {
-    name: 'Contact',
-  },
+  '/': { name: 'Home' },
+  '': { name: 'About Us' },
+  '': { name: 'More' },
 }
 
 export function Navbar() {
+  const pathname = usePathname()
+
   return (
-    <aside className="-ml-[8px] mb-16 tracking-tight">
-      <div className="lg:sticky lg:top-20">
+    <aside className="mb-10 tracking-tight">
+      <div className="lg:sticky lg:top-6 bg-white dark:bg-black rounded-xl shadow-sm p-4">
         <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row gap-4 justify-center items-center"
           id="nav"
         >
-          <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              )
-            })}
-          </div>
+          {Object.entries(navItems).map(([path, { name }]) => {
+            const isActive = pathname === path
+
+            return (
+              <Link
+                key={path}
+                href={path}
+                className={`text-md px-4 py-2 rounded-lg transition-all duration-200 ${
+                  isActive
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'text-gray-600 hover:text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-800'
+                }`}
+              >
+                {name}
+              </Link>
+            )
+          })}
         </nav>
       </div>
     </aside>
