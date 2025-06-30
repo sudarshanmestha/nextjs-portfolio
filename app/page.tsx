@@ -3,12 +3,23 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import AOS from 'aos'
+import useSWR from 'swr';
 import 'aos/dist/aos.css'
 
+const fetcher = (...args: Parameters<typeof fetch>) =>
+  fetch(...args).then(res => res.json());
+
+
+
 export default function Page() {
+  const {data, error, isLoading} = useSWR("http://127.0.0.1:8001/api/hello", fetcher)
   useEffect(() => {
     AOS.init({ duration: 1000 })
   }, [])
+  
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
+  
 
   return (
     <>
@@ -30,7 +41,7 @@ export default function Page() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80')",
+                "url('https://www.alamy.com/medical-drone-drone-delivering-first-aid-box-advancing-medical-industry-logistics-for-drug-transport-first-aid-drone-with-red-box-and-white-cross-image368265128.html')",
             }}
           >
             <div className="w-full h-full absolute bg-gradient-to-r from-black via-transparent to-black opacity-70"></div>
@@ -46,6 +57,8 @@ export default function Page() {
                       Software Developer
                     </span>
                   </h1>
+                  <div>{JSON.stringify(data)}</div>      
+
 
                   <div
                     className="my-6 rounded-lg border-2 border-blue-500 overflow-hidden shadow-lg"
