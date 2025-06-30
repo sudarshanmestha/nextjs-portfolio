@@ -3,22 +3,22 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import AOS from 'aos'
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import 'aos/dist/aos.css'
 
-const fetcher = (...args: Parameters<typeof fetch>) =>
-  fetch(...args).then(res => res.json());
+// const fetcher = (...args: Parameters<typeof fetch>) =>
+//   fetch(...args).then(res => res.json());
 
 
 
 export default function Page() {
-  const {data, error, isLoading} = useSWR("http://127.0.0.1:8001/api/hello", fetcher)
+  // const {data, error, isLoading} = useSWR("http://127.0.0.1:8001/api/hello", fetcher)
   useEffect(() => {
     AOS.init({ duration: 1000 })
   }, [])
   
-  if (error) return <div>failed to load</div>
-  if (isLoading) return <div>loading...</div>
+  // if (error) return <div>failed to load</div>
+  // if (isLoading) return <div>loading...</div>
   
 
   return (
@@ -57,7 +57,7 @@ export default function Page() {
                       Software Developer
                     </span>
                   </h1>
-                  <div>{JSON.stringify(data)}</div>      
+                  {/* <div>{JSON.stringify(data)}</div>       */}
 
 
                   <div
