@@ -6,9 +6,7 @@ import AOS from 'aos'
 // import useSWR from 'swr';
 import 'aos/dist/aos.css'
 
-// const fetcher = (...args: Parameters<typeof fetch>) =>
-//   fetch(...args).then(res => res.json());
-
+// const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 
 export default function Page() {
@@ -41,7 +39,7 @@ export default function Page() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://www.alamy.com/medical-drone-drone-delivering-first-aid-box-advancing-medical-industry-logistics-for-drug-transport-first-aid-drone-with-red-box-and-white-cross-image368265128.html')",
+                "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80')",
             }}
           >
             <div className="w-full h-full absolute bg-gradient-to-r from-black via-transparent to-black opacity-70"></div>
