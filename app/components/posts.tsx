@@ -1,14 +1,17 @@
+'use client'
+
 import Link from 'next/link'
+import Image from 'next/image'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 
 export function BlogPosts() {
-  let allBlogs = getBlogPosts()
+  const allBlogs = getBlogPosts()
 
   return (
     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {allBlogs
         .sort((a, b) => {
-          return new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt)
+          return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
         })
         .map((post) => (
           <Link
@@ -18,13 +21,13 @@ export function BlogPosts() {
           >
             <div className="flex flex-col space-y-2">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="h-48 w-full object-cover rounded-md"
-                  src={
-
-                    'https://www.shutterstock.com/image-illustration/realistic-drone-carrying-first-aid-600w-2480530807.jpg'
-                  }
+                  src="https://www.shutterstock.com/image-illustration/realistic-drone-carrying-first-aid-600w-2480530807.jpg"
                   alt={post.metadata.title}
+                  width={400}
+                  height={300}
+                  unoptimized // only if you're using external images and haven’t configured the domain in next.config.js
                 />
               </div>
 
