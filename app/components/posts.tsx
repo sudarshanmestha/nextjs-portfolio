@@ -20,7 +20,7 @@ export function BlogPosts() {
           >
             <div className="flex flex-col space-y-2">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="h-48 w-full object-cover rounded-md"
                   src="https://www.shutterstock.com/image-illustration/realistic-drone-carrying-first-aid-600w-2480530807.jpg"
                   alt={post.metadata.title}
