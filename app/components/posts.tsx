@@ -1,8 +1,7 @@
-'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPosts } from '@/lib/blog-utils'
 
 export function BlogPosts() {
   const allBlogs = getBlogPosts()
@@ -21,7 +20,7 @@ export function BlogPosts() {
           >
             <div className="flex flex-col space-y-2">
               <div className="flex-shrink-0">
-                <Image
+                <img
                   className="h-48 w-full object-cover rounded-md"
                   src="https://www.shutterstock.com/image-illustration/realistic-drone-carrying-first-aid-600w-2480530807.jpg"
                   alt={post.metadata.title}
