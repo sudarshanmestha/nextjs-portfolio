@@ -81,7 +81,7 @@ export default function Page() {
                     </span>
                   </p>
 
-                  <button className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-blue-600 transition duration-300">
+                  <button onClick={() => window.open('https://forms.gle/4K42hcZPtomfHYUZ9', '_blank')} className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-blue-600 transition duration-300">
                     Get Started Now
                   </button>
                 </div>
