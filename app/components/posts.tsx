@@ -38,7 +38,7 @@ export default function BlogPosts() {
               <div className="flex-shrink-0">
                 <Image
                   className="h-48 w-full object-cover rounded-md"
-                  src={'https://via.placeholder.com/400x300'}
+                  src={'https://i.postimg.cc/wjt6SccK/download-3.jpg'}
                   alt={post.title}
                   width={400}
                   height={300}
