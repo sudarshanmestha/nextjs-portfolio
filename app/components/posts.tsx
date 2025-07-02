@@ -1,17 +1,33 @@
+'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { formatDate, getBlogPosts } from '@/lib/blog-utils'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { formatDate } from '@/lib/date-utils'
 
-export function BlogPosts() {
-  const allBlogs = getBlogPosts()
+export default function BlogPosts() {
+  const [posts, setPosts] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    axios.get('https://justpythonindia.pythonanywhere.com/api/posts/')
+      .then(res => {
+        setPosts(res.data)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error('Error fetching posts:', err)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <div>Loading...</div>
 
   return (
     <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {allBlogs
-        .sort((a, b) => {
-          return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
-        })
+      {posts
+        .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
         .map((post) => (
           <Link
             key={post.slug}
@@ -22,20 +38,20 @@ export function BlogPosts() {
               <div className="flex-shrink-0">
                 <Image
                   className="h-48 w-full object-cover rounded-md"
-                  src="https://www.shutterstock.com/image-illustration/realistic-drone-carrying-first-aid-600w-2480530807.jpg"
-                  alt={post.metadata.title}
+                  src={'https://via.placeholder.com/400x300'}
+                  alt={post.title}
                   width={400}
                   height={300}
-                  unoptimized // only if you're using external images and haven’t configured the domain in next.config.js
+                  unoptimized
                 />
               </div>
 
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                {formatDate(post.metadata.publishedAt, false)}
+                {formatDate(post.published_at)}
               </p>
 
               <p className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
+                {post.title}
               </p>
             </div>
           </Link>

@@ -1,3 +1,4 @@
+
 import fs from 'fs'
 import path from 'path'
 
@@ -53,6 +54,7 @@ export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
 }
 
+// lib/date-utils.ts
 export function formatDate(date: string, includeRelative = false) {
   let currentDate = new Date()
   if (!date.includes('T')) {
@@ -82,9 +84,5 @@ export function formatDate(date: string, includeRelative = false) {
     year: 'numeric',
   })
 
-  if (!includeRelative) {
-    return fullDate
-  }
-
-  return `${fullDate} (${formattedDate})`
+  return includeRelative ? `${fullDate} (${formattedDate})` : fullDate
 }
