@@ -14,7 +14,7 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <aside className="mb-10 tracking-tight">
+    <aside className="mb-15 tracking-tight">
       <div className="lg:sticky lg:top-6 bg-white dark:bg-black rounded-2xl shadow-lg p-4 border border-gray-200 dark:border-gray-800">
         <nav
           className="flex flex-row justify-center gap-4 items-center"

@@ -11,6 +11,7 @@ type Post = {
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const res = await fetch(`https://justpythonindia.pythonanywhere.com/api/posts/${params.slug}/`)
+  //const res = await fetch(`http://127.0.0.1:8001/api/posts/${params.slug}/`)
   const post: Post = await res.json()
 
   return (

@@ -72,14 +72,15 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <p className="mt-6 text-lg text-blueGray-200">
-                    <span className="block font-semibold text-2xl text-white">
+                  <p className="mt-6 text-lg text-blueGray-200 text-center">
+                    <span className="block font-semibold text-2xl text-white drop-shadow-lg">
                       Embark on a Journey:
                     </span>
-                    <span className="block text-xl text-blueGray-100">
+                    <span className="block text-xl text-blue-200 drop-shadow-md">
                       Master Projects from Beginner to Advanced Levels
                     </span>
                   </p>
+
 
                   <button onClick={() => window.open('https://forms.gle/4K42hcZPtomfHYUZ9', '_blank')} className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-blue-600 transition duration-300">
                     Get Started Now
