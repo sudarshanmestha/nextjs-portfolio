@@ -6,7 +6,7 @@ import { Home, Info, MoreHorizontal } from 'lucide-react'
 
 const navItems = {
   '/': { name: 'Home', icon: <Home size={18} /> },
-  '/blog': { name: 'About Us', icon: <Info size={18} /> },
+  '/Ai-Tools': { name: 'Ai-Tools', icon: <Info size={18} /> },
   '/more': { name: 'More', icon: <MoreHorizontal size={18} /> },
 }
 
