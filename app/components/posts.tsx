@@ -10,8 +10,8 @@ export default function BlogPosts() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // axios.get('http://127.0.0.1:8001/api/posts/')
-    axios.get('https://justpythonindia.pythonanywhere.com/api/posts/')
+    axios.get('http://127.0.0.1:8001/api/posts/')
+    //axios.get('https://justpythonindia.pythonanywhere.com/api/posts/')
       .then(res => {
         setPosts(res.data)
         setLoading(false)
