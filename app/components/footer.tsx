@@ -40,7 +40,7 @@ export default function Footer() {
       </ul>
 
       <p className="mt-6 text-center text-xs text-neutral-500 dark:text-neutral-400">
-        © {new Date().getFullYear()} — MIT Licensed · Built with ❤️ by JustPython
+        © {new Date().getFullYear()} — MIT Licensed · Built with ❤️ by Sudarshan Mestha
       </p>
     </footer>
   )

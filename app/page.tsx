@@ -223,13 +223,14 @@ export default function Page() {
                   <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-24 h-24 rounded-xl flex items-center justify-center text-4xl">
                     Agent
                   </div>
+                  <a href="https://app.readytensor.ai/users/sudarshan15399">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold">Agentic Workflows</h3>
                     <p className="text-sm text-zinc-500 mt-1">August 15, 2025 • Research prototype</p>
                     <p className="mt-3 text-zinc-300">
                       Towards Natural-Language Programming for GitHub Actions
                     </p>
-                  </div>
+                  </div> </a>
                 </div>
               </div>
             </div>
