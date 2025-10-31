@@ -113,7 +113,7 @@ export default function Page() {
                   path="/more"
                   className="group flex items-center justify-center w-40 h-12 bg-zinc-800 rounded-full hover:bg-zinc-700 transition-all duration-300"
                 >
-                  <h4><strong>Documentry</strong></h4>
+                  <h4><strong>Documentray</strong></h4>
                 </BaseUrl>
               </div>
             </div>

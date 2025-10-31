@@ -3,9 +3,12 @@ import BlogPosts from 'app/components/posts'
 export default function AiToolsBlog() {
   return (
     <div className="min-h-screen bg-black text-white">
+
       {/* Hero */}
       <section className="relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900" />
+      
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900" /> */}
+        <div className="max-w-5xl mx-auto px-6 py-16">
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
             Project
@@ -22,14 +25,12 @@ export default function AiToolsBlog() {
             <path d="M0,0 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="currentColor" />
           </svg>
         </div>
+        
+        {/* Posts */}
+        <BlogPosts/>
+        </div>
       </section>
-
-      {/* Posts */}
-      <BlogPosts/>
-
-      <footer className="py-12 text-center text-zinc-500 text-sm border-t border-zinc-800">
-        © 2025 JustPython. AI Tools Documentary.
-      </footer>
     </div>
+    
   )
 }
