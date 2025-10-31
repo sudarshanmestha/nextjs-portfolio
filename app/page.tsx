@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import BaseUrl from 'app/components/BaseUrl'
 
 export default function Page() {
   useEffect(() => {
@@ -99,14 +100,22 @@ export default function Page() {
                 </a>
 
                 {/* project section */}
-                <a
-                  href="https://justpython.in/Ai-Tools"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <BaseUrl
+                  path="/Ai-Tools"
                   className="group flex items-center justify-center w-24 h-12 bg-zinc-800 rounded-full hover:bg-zinc-700 transition-all duration-300"
-                  aria-label="GitHub Profile"
                 >
                   <h4><strong>Projects</strong></h4>
+                </BaseUrl>
+
+                {/* Documentary section */}
+                
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-40 h-12 bg-zinc-800 rounded-full hover:bg-zinc-700 transition-all duration-300"
+                  aria-label="GitHub Profile"
+                >
+                  <h4><strong>Documentary</strong></h4>
                 </a>
               </div>
             </div>
