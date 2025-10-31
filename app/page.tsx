@@ -109,14 +109,12 @@ export default function Page() {
 
                 {/* Documentary section */}
                 
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <BaseUrl
+                  path="/more"
                   className="group flex items-center justify-center w-40 h-12 bg-zinc-800 rounded-full hover:bg-zinc-700 transition-all duration-300"
-                  aria-label="GitHub Profile"
                 >
-                  <h4><strong>Documentary</strong></h4>
-                </a>
+                  <h4><strong>Documentry</strong></h4>
+                </BaseUrl>
               </div>
             </div>
           </div>
