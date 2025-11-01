@@ -1,7 +1,7 @@
 // app/more/page.tsx
 'use client'
 
-import BlogPosts from 'app/components/posts'   // adjust the alias if you use a different one
+import MorePost from 'app/components/MorePost'   // adjust the alias if you use a different one
 
 export default function MorePage() {
   return (
@@ -46,7 +46,7 @@ export default function MorePage() {
           </div>
 
           {/* BLOG POSTS */}
-          <BlogPosts />
+          <MorePost />
         </div>
         {/* END max-w-5xl */}
       </section>
