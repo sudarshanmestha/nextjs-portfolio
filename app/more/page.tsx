@@ -1,24 +1,32 @@
 // app/more/page.tsx
-'use client'
+import Link from 'next/link'
+import Image from 'next/image'
 
-import MorePost from 'app/components/MorePost'   // adjust the alias if you use a different one
+type Post = {
+  id: number
+  title: string
+  slug: string
+  image_url: string | null
+  date: string
+}
 
-export default function MorePage() {
+async function getPosts(): Promise<Post[]> {
+  const res = await fetch('http://127.0.0.1:8001/DocPost/doc/', {
+    cache: 'no-store',
+  })
+  if (!res.ok) throw new Error('Failed to fetch')
+  return res.json()
+}
+
+export default async function MorePage() {
+  const posts = await getPosts()
+
   return (
     <div className="min-h-screen bg-black text-white">
-
-      {/* -------------------------------------------------
-          HERO + POSTS – FULL-WIDTH WRAPPER (optional)
-         ------------------------------------------------- */}
       <section className="relative py-16 px-6 md:px-12 lg:px-24 overflow-hidden">
-        {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900" />
 
-        {/* -------------------------------------------------
-            CONTENT – MAX-WIDTH 5XL
-           ------------------------------------------------- */}
         <div className="max-w-5xl mx-auto px-6 py-16">
-
           {/* HERO */}
           <div className="relative z-10 text-center">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
@@ -45,10 +53,43 @@ export default function MorePage() {
             </svg>
           </div>
 
-          {/* BLOG POSTS */}
-          <MorePost />
+          {/* POST GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+            {posts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/more/${post.slug}`}
+                className="group block bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl overflow-hidden hover:border-blue-500 transition"
+              >
+                <div className="relative h-48">
+                  {post.image_url ? (
+                    <Image
+                      src={post.image_url}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition"
+                    />
+                  ) : (
+                    <div className="bg-gradient-to-br from-blue-600 to-purple-600 w-full h-full" />
+                  )}
+                </div>
+
+                <div className="p-6">
+                  <time className="text-sm text-zinc-400">
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </time>
+                  <h3 className="mt-3 text-2xl font-bold text-white group-hover:text-blue-400 transition">
+                    {post.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        {/* END max-w-5xl */}
       </section>
     </div>
   )
