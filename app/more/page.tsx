@@ -12,11 +12,10 @@ type Post = {
 
 // THIS IS THE MISSING FUNCTION!
 async function getPosts(): Promise<Post[]> {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8001'
-  const res = await fetch(`${API_URL}/DocPost/doc/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/DocPost/doc/`, {
     cache: 'no-store',
   })
-  if (!res.ok) throw new Error('Failed to fetch posts')
+  if (!res.ok) return [] // fallback
   return res.json()
 }
 
