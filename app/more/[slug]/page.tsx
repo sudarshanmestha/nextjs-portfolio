@@ -52,10 +52,9 @@ export default async function PostDetail({ params }: { params: { slug: string } 
           {post.description}
         </p>
 
-        <div
-          className="prose prose-invert prose-lg max-w-none prose-pre:bg-zinc-900 prose-pre:p-6 prose-code:text-cyan-300"
-          dangerouslySetInnerHTML={{ __html: post.html_content }}
-        />
+        <div className="prose prose-invert prose-lg max-w-none">
+          <div dangerouslySetInnerHTML={{ __html: post.html_content }} />
+        </div>
       </div>
     </article>
   )
