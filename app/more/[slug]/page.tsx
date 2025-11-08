@@ -10,11 +10,12 @@ type Post = {
   date: string
 }
 
-async function getPost(slug: string): Promise<Post> {
-  const res = await fetch(`http://127.0.0.1:8001/DocPost/doc/${slug}/`, {
+async function getPosts(): Promise<Post[]> {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8001'
+  const res = await fetch(`${API_URL}/DocPost/doc/`, {
     cache: 'no-store',
   })
-  if (!res.ok) notFound()
+  if (!res.ok) throw new Error('Failed to fetch')
   return res.json()
 }
 
