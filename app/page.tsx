@@ -80,6 +80,27 @@ export default function Page() {
                     <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z" />
                   </svg>
                 </a>
+                
+
+                {/* Docker Icon */}
+                <a
+                  href="https://hub.docker.com/u/sudarshan999"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-12 h-12 bg-zinc-800 rounded-full hover:bg-zinc-700 transition-all duration-300"
+                  aria-label="Docker Profile"
+                >
+                  <svg
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="#1D63ED"  // Docker blue
+                    className="group-hover:scale-110 transition-transform"
+                  >
+                    <path d="M21.8 10.1c-.4-.3-1.3-.4-2-.2-.1-.5-.5-1.1-1-1.5l-.3-.2-.2.3c-.3.6-.4 1.3-.3 2-.6.1-1.2.4-1.6.8-.6.6-.9 1.5-.8 2.4.1.7.4 1.4.9 1.9.5.5 1.2.9 2 .9 1.6 0 2.9-1.3 2.9-2.9-.1-1.1-.6-2.1-1.6-2.5zM3 15.4h18c-.1 1.9-1.6 3.5-3.5 3.5H6.4C4.4 18.9 3 17.3 3 15.4zm3.2-6.9H9v2.8H6.2V8.5zm3.9 0h2.8v2.8H10V8.5zm3.9 0h2.8v2.8h-2.8V8.5zM6.2 11.9H9v2.8H6.2v-2.8zm3.9 0h2.8v2.8H10v-2.8zm3.9 0h2.8v2.8h-2.8v-2.8z"/>
+                  </svg>
+                </a>
+
+
 
                 {/* LinkedIn Icon */}
                 <a
@@ -126,17 +147,26 @@ export default function Page() {
         <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24">
           <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-black to-zinc-900" />
           <div className="relative z-10 max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight" data-aos="fade-up">
-              Become a{' '}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                Software Developer
-              </span>
-            </h1>
+          <h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            data-aos="fade-up"
+          >
+            Educator in{" "}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+              Data & Coding
+            </span>
+          </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-zinc-400 font-light max-w-3xl mx-auto"
-               data-aos="fade-up" data-aos-delay="200">
-              Master real-world projects from beginner to advanced. Build with Python, AI, ML, and Agentic systems.
-            </p>
+          <p
+            className="mt-6 text-lg md:text-xl text-zinc-400 font-light max-w-3xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Specializing in Machine Learning, Deep Learning, Natural Language Processing,
+            Time Series Analysis, Bayesian Statistics, Computational Quantum Physics,
+            Finance, and more.
+          </p>
+
 
             {/* Video Thumbnail */}
             <div className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 cursor-pointer"

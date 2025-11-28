@@ -58,4 +58,4 @@ export default async function PostDetail({ params }: { params: { slug: string } 
       </div>
     </article>
   )
-}
+}ls
