@@ -1,5 +1,6 @@
 # Run comman
--npm run dev
+-for Frontend: npm run dev
+-for backend: rav run server
 
 
 
