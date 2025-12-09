@@ -32,7 +32,13 @@
 html {
   min-width: 360px;
 }
-
+html.dark body {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.dark img,
+html.dark video {
+    filter: invert(1) hue-rotate(180deg);
+}
 .prose .anchor {
   @apply absolute invisible no-underline;
 

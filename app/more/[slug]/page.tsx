@@ -53,7 +53,7 @@ export default async function PostDetail({ params }: { params: { slug: string } 
         </p>
 
         <div
-  className="prose dark:prose-invert max-w-none"
+  className="dark:invert dark:hue-rotate-180"
 >
           <div dangerouslySetInnerHTML={{ __html: post.html_content }} />
         </div>
