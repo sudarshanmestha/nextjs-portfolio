@@ -188,15 +188,7 @@ const CoursePage = () => {
       <div style={{ backgroundColor: '#2f3136', borderBottom: '1px solid #1a1a1a' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1rem 2rem' }}>
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #627eff 0%, #8b5cf6 100%)' }}>
-                <span className="text-white font-bold text-lg">JP</span>
-              </div>
-              <span className="text-2xl font-bold" style={{ color: '#e1e1e1' }}>JustPython</span>
-            </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/courses" className="font-medium" style={{ color: '#627eff' }}>Courses</a>
-              <a href="/blog" className="font-medium" style={{ color: '#c3c3c3' }}>Blog</a>
               <a href="/pricing" className="font-medium" style={{ color: '#c3c3c3' }}>Pricing</a>
               <a href="/login" className="font-medium" style={{ color: '#c3c3c3' }}>Login</a>
             </nav>
