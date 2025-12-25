@@ -41,7 +41,7 @@ export default function Page() {
             <div className="flex-shrink-0" data-aos="fade-right">
               <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500 ring-offset-4 ring-offset-black">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D5603AQEIt0cM0VpDuQ/profile-displayphoto-scale_200_200/B56Zrx4c3fJsAY-/0/1764994700809?e=1766620800&v=beta&t=vu58ye_ooadWN6Fzht8r2H_mm7X0xDtJC92BcCZngtk"
+                  src="https://media.licdn.com/dms/image/v2/D5603AQEIt0cM0VpDuQ/profile-displayphoto-scale_200_200/B56Zrx4c3fJsAY-/0/1764994700809?e=1768435200&v=beta&t=NkQkjBNbezS2IJ0j25atCxH9A3XTecNdkrfnNpk2mDI"
                   alt="Sudarshan Mestha"
                   className="w-full h-full object-cover"
                 />
