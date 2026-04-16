@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+/* --- Core Brand Variables --- */
+:root {
+  --primary-neon: #39ff14;
+  --glass-bg-light: rgba(0, 0, 0, 0.03);
+  --glass-border-light: rgba(0, 0, 0, 0.08);
+  --glass-bg-dark: rgba(255, 255, 255, 0.03);
+  --glass-border-dark: rgba(255, 255, 255, 0.08);
+}
+
+/* --- 1. DEFAULT LIGHT MODE --- */
+body {
+  @apply bg-white text-neutral-500 transition-colors duration-300;
+  min-width: 360px;
+}
+
+.glass-panel {
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border-light);
+  @apply backdrop-blur-xl;
+}
+
+/* Update Prose for Light Mode visibility */
+.prose p { @apply text-neutral-600; }
+.prose h1, .prose h2, .prose h3 { @apply text-neutral-900; }
+
+
+/* --- 2. DARK MODE (Triggered by .dark-mode class) --- */
+/* use-dark-mode adds this class to the body or html tag */
+:global(.dark-mode) body,
+.dark-mode body {
+  @apply bg-black text-white;
+}
+
+.dark-mode .glass-panel {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+}
+
+.dark-mode .prose p { @apply text-neutral-300; }
+.dark-mode .prose h1, .dark-mode .prose h2, .dark-mode .prose h3 { @apply text-white; }
+
+
+/* --- Marketplace UI Utilities --- */
+@layer components {
+  .shadow-neon {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+  }
+
+  .shadow-neon-strong {
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.5);
+  }
+}
+
+/* --- Global Base Styles --- */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--primary-neon);
+  color: #000;
+}
+
+/* --- Navigation Link Styles --- */
+.nav-link {
+  @apply text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300;
+}
+
+.nav-link:hover {
+  color: var(--primary-neon);
+}
+
+/* Clear scrollbars for code blocks */
+pre::-webkit-scrollbar { display: none; }
+pre { -ms-overflow-style: none; scrollbar-width: none; }
