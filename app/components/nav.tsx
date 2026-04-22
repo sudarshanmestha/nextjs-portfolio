@@ -33,25 +33,21 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-[60] transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/80 dark:bg-[#021b1b]/90 backdrop-blur-2xl border-b border-neutral-200 dark:border-[#39FF14]/10 shadow-sm' 
-        : 'bg-transparent'
-    }`}>
+        <header className={`w-full z-[60] transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white/80 dark:bg-[#021b1b]/90 backdrop-blur-2xl border-b border-neutral-200 dark:border-[#39FF14]/10 shadow-sm' 
+            : 'bg-transparent'
+        }`}>
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'py-3' : 'py-5'}`}>
           
           {/* LOGO */}
           <div className="relative flex-shrink-0 flex items-center min-w-[180px] sm:min-w-[240px]">
             <Link href="/" className="relative z-10 block">
-              <Image 
-                alt="Reintenspark logo" 
-                src="/icons/reinternspark-logo.svg" 
-                width={isScrolled ? 200 : 240}
-                height={60}
-                className="object-contain transition-all duration-500"
-                priority
-              />
+            <div className="text-xl font-bold">
+              <span className="text-[#6b21a8]">J</span>
+              <span className="text-red-500">P</span>
+            </div>
             </Link>
           </div>
 
