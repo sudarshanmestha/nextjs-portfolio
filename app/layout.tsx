@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           {/* 🧭 Navbar (sticky under banner) */}
-          <header className="fixed top-9 z-[60]">
+          <header className="fixed top-9 left-0 w-full z-[60]">
             <Navbar />
           </header>
 
