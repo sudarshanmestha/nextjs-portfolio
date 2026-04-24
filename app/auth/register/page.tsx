@@ -73,10 +73,10 @@ export default function RegisterPage() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-white">
-            Join <span className="text-[#39FF14]">ReintenSpark</span>
+            Join <span className="text-[#39FF14]">Justpython</span>
           </h1>
           <p className="mt-2 text-neutral-400 text-sm uppercase tracking-widest font-medium">
-            Innovation in Drones & AI
+            Innovation in Robotics & AI
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function RegisterPage() {
               value={formData.username}
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
               className="w-full px-4 py-3 rounded-lg border border-neutral-700 bg-[#202225] text-white focus:border-[#39FF14] outline-none transition-all"
-              placeholder="reinten_pilot"
+              placeholder="justPython_pilot"
               required
               disabled={loading || isSuccess}
             />
@@ -147,7 +147,7 @@ export default function RegisterPage() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 py-3 rounded-lg border border-neutral-700 bg-[#202225] text-white focus:border-[#39FF14] outline-none transition-all"
-              placeholder="pilot@reintenspark.com"
+              placeholder="pilot@justpython.in"
               required
               disabled={loading || isSuccess}
             />

@@ -44,7 +44,7 @@ return (
     
     <div className="w-full max-w-md p-8 rounded-2xl border border-[#39FF14]/10 bg-black/60 backdrop-blur-xl shadow-2xl">
         <h1 className="text-3xl font-bold mb-6 text-center text-white">
-            Login to <span className="text-[#39FF14]">ReintenSpark</span>
+            Login to <span className="text-[#39FF14]">JustPython</span>
         </h1>
 
       {error && (
