@@ -12,10 +12,10 @@ import { baseUrl } from './sitemap';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'ReintenSpark Technology Pvt Ltd.',
-    template: '%s | Innovation in Drones & AI',
+    default: 'JustPython Pvt Ltd.',
+    template: '%s | Innovation in Robotics & AI Technology',
   },
-  description: 'Leading the future of robotics and IoT.',
+  description: 'Leading the future of robotics and AI.',
 }
 
 const cx = (...classes: (string | undefined | boolean)[]) =>
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="sticky top-0 h-9 bg-neutral-100 dark:bg-[#141416] border-b border-neutral-200 dark:border-white/5 flex items-center justify-center text-[12px] sm:text-sm">
             <p className="text-neutral-500 dark:text-neutral-400">
               Building the future of AI & Robotics at{" "}
-              <span className="text-[#39FF14] font-medium">ReintenSpark</span>.
+              <span className="text-[#6b21a8] font-medium">Just</span><span className="text-[#ef4444] font-medium">Python</span>.
             </p>
           </div>
 

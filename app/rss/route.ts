@@ -1,5 +1,5 @@
 import { baseUrl } from 'app/sitemap'
-import { getBlogPosts } from 'app/Ai-Tools/utils'
+import { getBlogPosts } from '@/app/ai-tools/utils'
 
 export async function GET() {
   let allBlogs = await getBlogPosts()
@@ -15,7 +15,7 @@ export async function GET() {
       (post) =>
         `<item>
           <title>${post.metadata.title}</title>
-          <link>${baseUrl}/AI-Tools/${post.slug}</link>
+          <link>${baseUrl}/aI-tools/${post.slug}</link>
           <description>${post.metadata.summary || ''}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
