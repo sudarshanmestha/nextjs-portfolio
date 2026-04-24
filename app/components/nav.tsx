@@ -10,10 +10,11 @@ import { useAuth } from '@/app/contexts/AuthContext';
 
 const navItems = [
   { name: 'Home', path: '/' },
+  { name: 'Courses', path: '/courses' }, 
   { name: 'Projects', path: '/projects' },
   { name: 'Ai-Tools', path: '/ai-tools' },
   { name: 'Careers', path: '/careers' },
-  { name: 'Contact', path: '/contact' }, 
+  
 ];
 
 export default function Navbar() {
