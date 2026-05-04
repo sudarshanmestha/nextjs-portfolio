@@ -1,4 +1,3 @@
-// app/components/nav.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -29,10 +28,13 @@ export default function Navbar() {
   }, []);
 
   const isHomePage = pathname === '/';
+  
+  // Logic to determine if we should show a solid, non-transparent background
+  const isSolid = isScrolled || !isHomePage;
 
-  // Wrapper background logic (The "Header" itself)
-  const headerBg = (isScrolled || !isHomePage) 
-    ? 'bg-white/95 dark:bg-[#021b1b]/95 backdrop-blur-md border-b border-neutral-200 dark:border-[#39FF14]/10 shadow-md' 
+  // 1. Updated Header Background Logic: Removed "/95" and "backdrop-blur" for solid pages
+  const headerBg = isSolid 
+    ? 'bg-white dark:bg-[#021b1b] border-b border-neutral-200 dark:border-[#39FF14]/10 shadow-md' 
     : 'bg-transparent';
 
   return (
@@ -50,17 +52,21 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* NAVIGATION MENU - SOLID PILL STYLING */}
+          {/* NAVIGATION MENU */}
           <div className={`
-            fixed inset-0 z-[105] flex flex-col items-center justify-start pt-24 gap-4 transition-transform duration-500
+            fixed inset-0 z-[105] flex flex-col items-center justify-start pt-32 gap-4 transition-transform duration-500
             lg:static lg:flex lg:flex-row lg:inset-auto lg:translate-x-0 lg:pt-0 lg:gap-1
             
-            /* Inner Nav Pill: Always Non-Transparent/Solid */
-            bg-white dark:bg-[#021b1b] lg:bg-neutral-100 lg:dark:bg-white/10
-            lg:border lg:border-neutral-200 lg:dark:border-white/15
-            lg:rounded-full lg:px-2 lg:py-1.5 lg:shadow-sm lg:backdrop-blur-none
+            /* MOBILE MENU: Always solid when visible */
+            ${visibleNav ? 'translate-x-0 bg-white dark:bg-[#021b1b]' : 'translate-x-full lg:translate-x-0'}
             
-            ${visibleNav ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+            /* 2. DESKTOP PILL: Switched from "white/10" to solid color on sub-pages/scroll */
+            ${isSolid 
+              ? 'lg:bg-white lg:dark:bg-[#021b1b] lg:shadow-md' 
+              : 'lg:bg-neutral-100 lg:dark:bg-white/10 lg:backdrop-blur-md'}
+            
+            lg:border lg:border-neutral-200 lg:dark:border-white/15
+            lg:rounded-full lg:px-2 lg:py-1.5
           `}>
             <nav className="flex flex-col lg:flex-row items-center w-full lg:w-auto px-6 lg:px-0 gap-2 lg:gap-1">
               {navItems.map((item) => {
