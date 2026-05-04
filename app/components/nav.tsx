@@ -28,11 +28,8 @@ export default function Navbar() {
   }, []);
 
   const isHomePage = pathname === '/';
-  
-  // Logic to determine if we should show a solid, non-transparent background
   const isSolid = isScrolled || !isHomePage;
 
-  // 1. Updated Header Background Logic: Removed "/95" and "backdrop-blur" for solid pages
   const headerBg = isSolid 
     ? 'bg-white dark:bg-[#021b1b] border-b border-neutral-200 dark:border-[#39FF14]/10 shadow-md' 
     : 'bg-transparent';
@@ -57,10 +54,10 @@ export default function Navbar() {
             fixed inset-0 z-[105] flex flex-col items-center justify-start pt-32 gap-4 transition-transform duration-500
             lg:static lg:flex lg:flex-row lg:inset-auto lg:translate-x-0 lg:pt-0 lg:gap-1
             
-            /* MOBILE MENU: Always solid when visible */
+            /* MOBILE MENU BACKGROUND - Solid and Non-Transparent */
             ${visibleNav ? 'translate-x-0 bg-white dark:bg-[#021b1b]' : 'translate-x-full lg:translate-x-0'}
             
-            /* 2. DESKTOP PILL: Switched from "white/10" to solid color on sub-pages/scroll */
+            /* DESKTOP PILL BACKGROUND */
             ${isSolid 
               ? 'lg:bg-white lg:dark:bg-[#021b1b] lg:shadow-md' 
               : 'lg:bg-neutral-100 lg:dark:bg-white/10 lg:backdrop-blur-md'}
@@ -88,10 +85,21 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* MOBILE ONLY LOGIN BUTTON (Visible inside Hamburger Menu) */}
+              {!loading && !isAuthenticated && (
+                <Link
+                  href="/auth/login"
+                  onClick={() => setVisibleNav(false)}
+                  className="lg:hidden w-full mt-4 px-6 py-4 border border-[#39FF14] text-[#39FF14] text-center text-lg font-bold uppercase tracking-widest rounded-full hover:bg-[#39FF14] hover:text-black transition-all"
+                >
+                  Login
+                </Link>
+              )}
             </nav>
           </div>
 
-          {/* RIGHT ACTIONS */}
+          {/* RIGHT ACTIONS (Desktop Login + Theme) */}
           <div className="flex items-center gap-4 z-[110]">
             <div className="hidden xs:block border-r border-neutral-200 dark:border-white/10 pr-4">
               <Theme />
@@ -101,9 +109,10 @@ export default function Navbar() {
               isAuthenticated && user ? (
                 <User user={user} />
               ) : (
+                /* Hidden on Mobile because it is now inside the visibleNav menu above */
                 <Link
                   href="/auth/login"
-                  className="hidden sm:block px-5 py-2 border border-[#39FF14] text-[#39FF14] text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-[#39FF14] hover:text-black transition-all"
+                  className="hidden lg:block px-5 py-2 border border-[#39FF14] text-[#39FF14] text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-[#39FF14] hover:text-black transition-all"
                 >
                   Login
                 </Link>
