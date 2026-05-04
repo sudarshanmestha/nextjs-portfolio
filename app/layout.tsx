@@ -15,25 +15,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html 
       lang="en" 
       className={cx('antialiased scroll-smooth', GeistSans.variable, GeistMono.variable)}
-      suppressHydrationWarning
+      suppressHydrationWarning // Excellent: This is required for theme toggles to prevent hydration mismatch errors.
     >
-      <body className="min-h-screen flex flex-col overflow-x-hidden bg-black text-white">
+      {/* 
+          FIX APPLIED: 
+          Removed 'bg-white text-black dark:bg-[#121212] dark:text-white transition-colors duration-300'.
+          Your global.css is now handling the base colors and transitions cleanly.
+          The body tag now only handles layout classes.
+      */}
+      <body className="min-h-screen flex flex-col overflow-x-hidden">
         <AuthProvider>
-          {/* 🔝 Top Banner - Sticky at the very top */}
-          <div className="sticky top-0 z-[100] h-9 bg-neutral-100 dark:bg-[#141416] border-b border-neutral-200 dark:border-white/5 flex items-center justify-center text-[12px] sm:text-sm">
-            <p className="text-neutral-500 dark:text-neutral-400">
+          
+          {/* Top Banner - Kept the clean monochrome setup[cite: 8] */}
+          <div className="sticky top-0 z-[100] h-9 bg-gray-50 dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-gray-800 flex items-center justify-center text-[10px] uppercase tracking-widest font-bold transition-colors duration-300">
+            <p className="text-gray-500 dark:text-gray-400">
               Building the future of AI & Robotics at{" "}
-              <span className="text-[#6b21a8] font-medium">Just</span>
-              <span className="text-[#ef4444] font-medium">Python</span>.
+              <span className="text-black dark:text-white">Just</span>
+              <span className="text-gray-400 dark:text-gray-500">Python</span>.
             </p>
           </div>
 
-          {/* 🧭 Navbar - Fixed at top-9 (below banner) */}
           <Navbar />
 
-          {/* 📦 Main Content */}
           <main className="flex-1 w-full flex justify-center">
-            <div className="w-full max-w-8xl">
+            {/* pt-20 ensures content is below the fixed header/nav[cite: 8] */}
+            <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
               {children}
             </div>
           </main>

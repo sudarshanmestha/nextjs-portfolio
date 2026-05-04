@@ -1,33 +1,38 @@
+// app/components/Theme.tsx
 "use client";
 
 import React, { useEffect, useState } from 'react';
 import useDarkMode from 'use-dark-mode';
 
 const Theme = ({ className }: { className?: string }) => {
-  const darkMode = useDarkMode(false);
+  // CONFIGURATION FIX: explicitly set 'dark' and 'light' class names
+  const darkMode = useDarkMode(false, {
+    classNameDark: 'dark',   // This matches Tailwind's expectation
+    classNameLight: 'light',
+    element: typeof document !== 'undefined' ? document.documentElement : undefined, 
+  });
+
   const [mounted, setMounted] = useState(false);
 
-  // Only render the toggle after the component has mounted on the client
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    // Return a placeholder with the same dimensions to prevent layout shift
-    return <div className="w-12 h-6" />; 
-  }
+  if (!mounted) return <div className="w-11 h-6" />; 
 
   return (
-    <label className="relative inline-flex items-center cursor-pointer">
-      <input
-        type="checkbox"
-        className="sr-only peer"
-        checked={darkMode.value}
-        onChange={darkMode.toggle}
+    <button
+      onClick={darkMode.toggle}
+      className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors duration-300 ${
+        darkMode.value ? 'bg-gray-700' : 'bg-gray-200'
+      } ${className}`}
+    >
+      <span
+        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ${
+          darkMode.value ? 'translate-x-6' : 'translate-x-1'
+        }`}
       />
-      {/* ... rest of your Tailwind toggle UI ... */}
-      <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#39FF14]"></div>
-    </label>
+    </button>
   );
 };
 

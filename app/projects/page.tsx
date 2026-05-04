@@ -5,11 +5,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export default function ProjectPage() {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true, offset: 100 })
-  }, [])
-
-  // Data derived from Sudarshan_Mestha.pdf[cite: 1]
+  // Define projects INSIDE the function so the return statement can see it
   const projects = [
     {
       title: "Bank Statement OCR Engine",
@@ -43,25 +39,29 @@ export default function ProjectPage() {
       tech: ["PyTorch Geometric", "Hugging Face", "NetworkX", "Scikit-learn"],
       highlights: ["Relational transaction modeling", "Semantic feature analysis", "Hybrid AI architecture"]
     }
-  ]
+  ];
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true, offset: 100 })
+  }, [])
 
   return (
-    <div className="bg-black text-white min-h-screen px-4 sm:px-8 lg:px-12 font-sans pb-20">
+    <div className="min-h-screen px-4 sm:px-8 lg:px-12 pb-20">
       <div className="mx-auto max-w-6xl">
 
         {/* HEADER SECTION */}
         <section className="text-center py-24 lg:py-32 space-y-6">
-          <div data-aos="fade-down" className="inline-block bg-zinc-900 border border-zinc-800 rounded-full px-5 py-2 text-sm font-medium text-orange-500">
+          <div data-aos="fade-down" className="inline-block custom-box rounded-full px-5 py-2 text-sm font-bold uppercase tracking-widest">
             Selected Technical Works
           </div>
 
           <h1 data-aos="zoom-out" className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight">
-            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">&</span> <br />
-            <span className="text-orange-500 underline decoration-zinc-800 underline-offset-8">Artificial Intelligence.</span>
+            Engineering <span className="opacity-30">&</span> <br />
+            <span className="underline decoration-gray-400 dark:decoration-zinc-700 underline-offset-8">Artificial Intelligence.</span>
           </h1>
 
-          <p data-aos="fade-up" className="max-w-2xl mx-auto text-lg text-zinc-400 leading-relaxed">
-            A showcase of production-level OCR engines, agentic AI frameworks, and scalable cloud architectures built with Python and modern ML stacks.
+          <p data-aos="fade-up" className="max-w-2xl mx-auto text-lg opacity-70 leading-relaxed">
+            A showcase of production-level OCR engines, agentic AI frameworks, and scalable cloud architectures.
           </p>
         </section>
 
@@ -72,37 +72,37 @@ export default function ProjectPage() {
               key={i}
               data-aos="fade-up"
               data-aos-delay={i * 100}
-              className="group relative bg-zinc-900/40 border border-zinc-800 rounded-3xl p-8 lg:p-10 hover:bg-zinc-900 transition-all duration-500"
+              className="custom-box rounded-3xl p-8 lg:p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
             >
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <span className="text-xs font-mono text-orange-500 uppercase tracking-widest">{project.category}</span>
-                  <h3 className="text-3xl font-bold mt-2 group-hover:text-orange-400 transition-colors">{project.title}</h3>
-                  <p className="text-zinc-500 text-sm mt-1">{project.client}</p>
+                  <span className="text-xs font-mono opacity-50 uppercase tracking-widest">{project.category}</span>
+                  <h3 className="text-3xl font-bold mt-2">{project.title}</h3>
+                  <p className="opacity-60 text-sm mt-1">{project.client}</p>
                 </div>
               </div>
 
-              <p className="text-zinc-400 leading-relaxed mb-8">
+              <p className="opacity-70 leading-relaxed mb-8">
                 {project.description}
               </p>
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs font-bold text-zinc-200 uppercase mb-3 tracking-tighter">Key Technical Impacts</h4>
+                  <h4 className="text-xs font-bold uppercase mb-3 tracking-widest opacity-90">Key Technical Impacts</h4>
                   <ul className="grid grid-cols-1 gap-2">
                     {project.highlights.map((h, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-zinc-400">
-                        <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3" />
+                      <li key={idx} className="flex items-center text-sm opacity-70">
+                        <span className="w-1.5 h-1.5 bg-black dark:bg-white rounded-full mr-3" />
                         {h}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-zinc-800">
+                <div className="pt-6 border-t border-black/10 dark:border-white/10">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="bg-black border border-zinc-700 px-3 py-1 rounded-lg text-[11px] font-semibold text-zinc-300">
+                      <span key={t} className="bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/10 px-3 py-1 rounded-lg text-[11px] font-bold">
                         {t}
                       </span>
                     ))}
@@ -114,47 +114,42 @@ export default function ProjectPage() {
         </section>
 
         {/* TECH STACK BENTO */}
-        <section className="mt-32 py-20 border-t border-zinc-900">
+        <section className="mt-32 py-20 border-t border-black/5 dark:border-white/5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div data-aos="fade-right" className="md:col-span-1 bg-zinc-900 p-8 rounded-3xl border border-zinc-800">
+            <div className="custom-box p-8 rounded-3xl">
               <h3 className="text-2xl font-bold mb-4">Core Tech</h3>
-              <p className="text-zinc-400 text-sm">Primary languages and frameworks utilized across projects.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Python", "Django", "Flask", "FastAPI", "React.js"].map(s => (
-                  <span key={s} className="bg-zinc-800 px-3 py-1 rounded-md text-xs">{s}</span>
+                  <span key={s} className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-xs font-medium">{s}</span>
                 ))}
               </div>
             </div>
 
-            <div data-aos="fade-up" className="md:col-span-1 bg-orange-600 p-8 rounded-3xl text-white">
+            <div className="inverted-card p-8 rounded-3xl">
               <h3 className="text-2xl font-bold mb-4">AI & ML</h3>
-              <p className="text-orange-100 text-sm">Specialized in NLP, Computer Vision, and Generative AI pipelines.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["PyTorch", "LangChain", "Hugging Face", "OpenCV"].map(s => (
-                  <span key={s} className="bg-orange-700/50 px-3 py-1 rounded-md text-xs">{s}</span>
+                  <span key={s} className="bg-white/20 dark:bg-black/20 px-3 py-1 rounded-md text-xs font-medium">{s}</span>
                 ))}
               </div>
             </div>
 
-            <div data-aos="fade-left" className="md:col-span-1 bg-zinc-900 p-8 rounded-3xl border border-zinc-800">
+            <div className="custom-box p-8 rounded-3xl">
               <h3 className="text-2xl font-bold mb-4">Cloud</h3>
-              <p className="text-zinc-400 text-sm">Experience in deploying and scaling production environments.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["AWS", "Docker", "GitHub Actions", "NGINX"].map(s => (
-                  <span key={s} className="bg-zinc-800 px-3 py-1 rounded-md text-xs">{s}</span>
+                  <span key={s} className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-xs font-medium">{s}</span>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* FOOTER CTA */}
-        <footer className="mt-20 py-10 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-zinc-500 text-sm">© 2026 Sudarshan Mestha — AI & Full Stack Engineer</p>
+        <footer className="mt-20 py-10 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-60 text-sm">
+          <p>© 2026 Sudarshan Mestha — AI & Full Stack Engineer</p>
           <div className="flex gap-6">
-            <a href="mailto:sudarshanmestha0@gmail.com" className="text-sm font-bold hover:text-orange-500 transition-colors">Contact</a>
-            <a href="https://www.linkedin.com/in/sudarshan-mestha/?skipRedirect=true" className="text-sm font-bold hover:text-orange-500 transition-colors">LinkedIn</a>
-            <a href="https://justpython.in" className="text-sm font-bold hover:text-orange-500 transition-colors">Project Hub</a>
+            <a href="mailto:sudarshanmestha0@gmail.com" className="hover:underline">Contact</a>
+            <a href="https://linkedin.com/in/sudarshan-mestha/" className="hover:underline">LinkedIn</a>
           </div>
         </footer>
 
