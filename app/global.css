@@ -1,25 +1,41 @@
 @import 'tailwindcss';
 
-/* Standard base reset - let Tailwind handle the body */
-body {
-  @apply bg-white text-black transition-colors duration-300;
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --border: #e4e4e7;
+  }
+
+  .dark {
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --border: #27272a;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply transition-colors duration-300;
+  }
 }
 
-.dark body {
-  @apply bg-[#0a0a0a] text-white;
+/* Fix for Logo and Login visibility */
+.text-foreground {
+  color: var(--foreground);
 }
 
 /* Force the box to ALWAYS have the correct text color for its background */
 .custom-box {
   background-color: #f4f4f5 !important; /* Zinc-100 */
   border: 1px solid #e4e4e7 !important;
-  color: #000000 !important; /* STRICT: Always black text in light mode boxes */
+  color: #000000 !important; 
 }
 
 .dark .custom-box {
   background-color: #18181b !important; /* Zinc-900 */
   border: 1px solid #27272a !important;
-  color: #ffffff !important; /* STRICT: Always white text in dark mode boxes */
+  color: #ffffff !important;
 }
 
 /* Helper for the one card you want to stay black/dark in both modes */
