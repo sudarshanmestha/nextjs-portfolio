@@ -7,6 +7,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (data: LoginData) => Promise<void>;
+  googleLogin: (accessToken: string) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => Promise<void>;
   updateUser: (data: Partial<User>) => Promise<void>;
@@ -43,7 +44,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('refresh_token', response.refresh);
     setUser(response.user);
   };
-
+  
+  const googleLogin = async (accessToken: string) => {
+    const response = await api.googleLogin(accessToken);
+    // api.googleLogin already stores tokens in localStorage
+    // now fetch the user to update context
+    const userData = await api.getCurrentUser();
+    setUser(userData);
+  };
+  
   const register = async (data: RegisterData) => {
     const response = await api.register(data);
     localStorage.setItem('access_token', response.access);
@@ -74,6 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         user,
         loading,
         login,
+        googleLogin,
         register,
         logout,
         updateUser,

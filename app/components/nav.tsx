@@ -33,7 +33,6 @@ export default function Navbar() {
     ? 'bg-white dark:bg-[#121212] border-b border-gray-200 dark:border-gray-800 shadow-sm' 
     : 'bg-transparent';
 
-  // This ensures text is always visible against the background defined in global.css
   const dynamicTextColor = "text-foreground dark:text-white";
 
   return (
@@ -41,10 +40,10 @@ export default function Navbar() {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16">
         <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'py-2' : 'py-4'}`}>
           
-          {/* LOGO - Fixed Color */}
+          {/* LOGO */}
           <div className="relative z-[110] flex-shrink-0">
             <Link href="/" className="block">
-              <div className={`text-xl font-black text-gray-500 dark:text-gray-400 tracking-tighter`}>
+              <div className="text-xl font-black text-gray-500 dark:text-gray-400 tracking-tighter">
                 JP
               </div>
             </Link>
@@ -79,36 +78,55 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* LOGIN BUTTON — mobile menu only */}
+              {!loading && !isAuthenticated && (
+                <Link
+                  href="/auth/login"
+                  onClick={() => setVisibleNav(false)}
+                  className="lg:hidden w-full text-center px-6 py-4 text-[11px] font-bold uppercase tracking-widest rounded-full transition-all border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                >
+                  Login
+                </Link>
+              )}
+
+              {/* USER — mobile menu only */}
+              {!loading && isAuthenticated && user && (
+                <div className="lg:hidden pt-2">
+                  <User user={user} />
+                </div>
+              )}
             </nav>
           </div>
 
-          {/* RIGHT ACTIONS - Fixed Button Color */}
+          {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-4 z-[110]">
             <div className="border-r border-gray-200 dark:border-gray-800 pr-4">
               <Theme />
             </div>
 
+            {/* LOGIN/USER — desktop only */}
             {!loading && (
               isAuthenticated && user ? (
                 <User user={user} />
               ) : (
-            <Link
-              href="/auth/login"
-              className={`
-                hidden lg:block
-                px-5 py-2
-                text-[11px] font-bold uppercase tracking-widest
-                rounded-full transition-all duration-300
-                border border-gray-300 dark:border-gray-700
-                text-gray-500 dark:text-gray-400
-                bg-white/70 dark:bg-white/5
-                hover:bg-black hover:text-white
-                dark:hover:bg-white dark:hover:text-black
-                backdrop-blur-sm
-              `}
-            >
-              Login
-            </Link>
+                <Link
+                  href="/auth/login"
+                  className="
+                    hidden lg:block
+                    px-5 py-2
+                    text-[11px] font-bold uppercase tracking-widest
+                    rounded-full transition-all duration-300
+                    border border-gray-300 dark:border-gray-700
+                    text-gray-500 dark:text-gray-400
+                    bg-white/70 dark:bg-white/5
+                    hover:bg-black hover:text-white
+                    dark:hover:bg-white dark:hover:text-black
+                    backdrop-blur-sm
+                  "
+                >
+                  Login
+                </Link>
               )
             )}
 
@@ -117,11 +135,12 @@ export default function Navbar() {
               className="lg:hidden flex flex-col gap-1.5 p-2"
               onClick={() => setVisibleNav(!visibleNav)}
             >
-              <div className={`w-6 h-0.5 transition-all bg-current ${dynamicTextColor} ${visibleNav ? 'rotate-45 translate-y-2' : ''}`} />
-              <div className={`w-6 h-0.5 transition-all bg-current ${dynamicTextColor} ${visibleNav ? 'opacity-0' : ''}`} />
-              <div className={`w-6 h-0.5 transition-all bg-current ${dynamicTextColor} ${visibleNav ? '-rotate-45 -translate-y-2' : ''}`} />
+              <div className={`w-6 h-0.5 transition-all bg-current text-white ${visibleNav ? 'rotate-45 translate-y-2' : ''}`} />
+              <div className={`w-6 h-0.5 transition-all bg-current text-white ${visibleNav ? 'opacity-0' : ''}`} />
+              <div className={`w-6 h-0.5 transition-all bg-current text-white ${visibleNav ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
+
         </div>
       </div>
     </header>

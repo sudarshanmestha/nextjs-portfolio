@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@/app/contexts/AuthContext";
+import { useGoogleLogin } from '@react-oauth/google';
 import Link from 'next/link';
 
 export default function RegisterPage() {
   const router = useRouter();
-  const { register, isAuthenticated } = useAuth(); // register is from AuthContext
+  const { register, googleLogin, isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -18,8 +19,6 @@ export default function RegisterPage() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
-  // Track successful registration for UI feedback
   const [isSuccess, setIsSuccess] = useState(false);
 
   React.useEffect(() => {
@@ -32,7 +31,6 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    // Basic Client-side validation
     if (formData.password1 !== formData.password2) {
       setError('Passwords do not match');
       return;
@@ -46,25 +44,36 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      // Calls the register function which handles API and LocalStorage
       await register(formData);
-      
       setIsSuccess(true);
-      
-      // Delay redirection so the user can see the success message
-      setTimeout(() => {
-        router.push('/');
-      }, 2000);
+      setTimeout(() => router.push('/'), 2000);
     } catch (err: any) {
-      // Standardize error message extraction from api.ts
       setError(err.message || 'Registration failed. Please try again.');
       setLoading(false);
     }
   };
 
+  const handleGoogleSignup = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        setError('');
+        setLoading(true);
+        await googleLogin(tokenResponse.access_token);
+        setIsSuccess(true);
+        setTimeout(() => router.push('/'), 2000);
+      } catch (err: any) {
+        setError(err.message || 'Google signup failed');
+        setLoading(false);
+      }
+    },
+    onError: () => {
+      setError('Google signup failed. Please try again.');
+      setLoading(false);
+    },
+  });
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-[#202225] py-12 px-4">
-      
       <div className="w-full max-w-md p-8 rounded-2xl border border-[#39FF14]/10 bg-black/60 backdrop-blur-xl shadow-2xl">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
@@ -86,12 +95,39 @@ export default function RegisterPage() {
           </div>
         )}
 
-        {/* Success Message UI */}
         {isSuccess && (
           <div className="mb-4 p-3 rounded-lg border border-[#39FF14]/20 bg-[#39FF14]/10 text-[#39FF14] text-sm text-center animate-pulse font-bold uppercase tracking-widest">
             Welcome aboard! Redirecting...
           </div>
         )}
+
+        {/* Google Signup */}
+        <button
+          type="button"
+          onClick={() => handleGoogleSignup()}
+          disabled={loading || isSuccess}
+          className={`w-full py-3 rounded-full font-bold uppercase tracking-widest border transition-all flex items-center justify-center gap-3 mb-6 ${
+            loading || isSuccess
+              ? 'border-neutral-700 text-neutral-500 cursor-not-allowed'
+              : 'border-neutral-700 text-white hover:border-[#39FF14]/50 hover:text-[#39FF14] active:scale-95'
+          }`}
+        >
+          <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 8 2.9l6-6C34.5 3.1 29.6 1 24 1 14.8 1 7 6.7 3.7 14.6l7 5.4C12.4 13.8 17.7 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.4 5.7c4.3-4 6.8-9.9 6.8-16.9z"/>
+            <path fill="#FBBC05" d="M10.7 28.6A14.7 14.7 0 0 1 9.5 24c0-1.6.3-3.2.8-4.6l-7-5.4A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.2-6z"/>
+            <path fill="#34A853" d="M24 47c5.4 0 10-1.8 13.3-4.8l-7.4-5.7c-1.8 1.2-4.1 1.9-5.9 1.9-6.3 0-11.6-4.3-13.5-10l-8.2 6C7 41.3 14.8 47 24 47z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        {/* Divider */}
+        <div className="relative flex items-center justify-center mb-6">
+          <div className="w-full border-t border-neutral-700" />
+          <span className="absolute bg-black/60 px-3 text-neutral-500 text-xs uppercase tracking-widest">
+            or register manually
+          </span>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -188,7 +224,7 @@ export default function RegisterPage() {
             disabled={loading || isSuccess}
             className={`w-full py-4 rounded-full font-bold uppercase tracking-widest transition-all mt-4 ${
               loading || isSuccess
-                ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed' 
+                ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed'
                 : 'bg-[#39FF14] text-black hover:shadow-[0_0_25px_rgba(57,255,20,0.5)] active:scale-95'
             }`}
           >
