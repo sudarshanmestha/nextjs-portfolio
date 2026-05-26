@@ -81,7 +81,7 @@ const CoursePage = () => {
         <div className="flex flex-col space-y-4 mb-12" data-aos="fade-up">
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">Courses</h1>
           <p className="text-xl opacity-70">
-            Master Software Development from basics to advanced.
+            Master Software Development from basics to advanced. Hare Krishna 
           </p>
         </div>
 
