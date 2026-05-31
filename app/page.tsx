@@ -25,7 +25,7 @@ export default function Page() {
           </h1>
 
           <div className="flex gap-4">
-            <Link href="/login" className="bg-black text-white dark:bg-white dark:text-black px-6 py-2 rounded-md font-bold">
+            <Link href="/auth/login" className="bg-black text-white dark:bg-white dark:text-black px-6 py-2 rounded-md font-bold">
               Get Started
             </Link>
           </div>
