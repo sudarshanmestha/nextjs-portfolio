@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center pb-8 overflow-hidden">
+    <div className="relative w-full flex items-center justify-center py-8 overflow-x-hidden">
 
       {/* Gradient backdrop */}
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]" />
@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
           bg-[var(--card)]/80
           backdrop-blur-2xl
           border border-[var(--border)]
-          rounded-3xl p-8
+          rounded-3xl p-5 sm:p-8
           shadow-2xl shadow-black/40
         ">
 

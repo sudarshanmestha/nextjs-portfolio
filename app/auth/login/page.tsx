@@ -45,7 +45,7 @@ export default function LoginPage() {
   });
 
   return (
-    <div className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden">
+    <div className="relative w-full flex items-center justify-center py-8 overflow-x-hidden">
 
       {/* Dark gold gradient backdrop */}
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]" />
@@ -56,12 +56,12 @@ export default function LoginPage() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[#1f6feb]/8 blur-[90px] pointer-events-none" />
 
       {/* Glass card */}
-      <div className="relative z-10 w-full max-w-md px-4">
+      <div className="relative z-10 w-full max-w-md">
         <div className="
           bg-[var(--card)]/80
           backdrop-blur-2xl
           border border-[var(--border)]
-          rounded-3xl p-8
+          rounded-3xl p-5 sm:p-8
           shadow-2xl shadow-black/20
         ">
 

@@ -64,7 +64,7 @@ export default function RegisterPage() {
   `;
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center pb-8 overflow-hidden">
+    <div className="relative w-full flex items-start sm:items-center justify-center py-6 sm:py-10 overflow-x-hidden">
 
       {/* Gradient backdrop */}
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]" />
@@ -80,7 +80,7 @@ export default function RegisterPage() {
           bg-[var(--card)]/80
           backdrop-blur-2xl
           border border-[var(--border)]
-          rounded-3xl p-8
+          rounded-3xl p-5 sm:p-8
           shadow-2xl shadow-black/40
         ">
 
@@ -141,7 +141,7 @@ export default function RegisterPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-[var(--foreground)]/40">First Name</label>
                 <input type="text" value={formData.first_name}

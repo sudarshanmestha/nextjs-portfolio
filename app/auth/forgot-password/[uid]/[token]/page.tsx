@@ -43,13 +43,13 @@ export default function ResetPasswordConfirmPage() {
   `;
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center pb-8 overflow-hidden">
+    <div className="relative w-full flex items-center justify-center py-8 overflow-x-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]" />
       <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-[#58a6ff]/15 blur-[110px] pointer-events-none" />
       <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-[#388bfd]/10 blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-md">
-        <div className="bg-[var(--card)]/80 backdrop-blur-2xl border border-[var(--border)] rounded-3xl p-8 shadow-2xl shadow-black/40">
+        <div className="bg-[var(--card)]/80 backdrop-blur-2xl border border-[var(--border)] rounded-3xl p-5 sm:p-8 shadow-2xl shadow-black/40">
 
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl gradient-bg shadow-lg shadow-[#58a6ff]/30 mb-4">
