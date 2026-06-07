@@ -42,7 +42,7 @@ export default function BlogPosts() {
             className="group"
           >
             <div
-              className="project-card bg-[#f5f5f7] dark:bg-[#111111]
+              className="project-card custom-box
                          rounded-[32px] p-6 md:p-10
                          flex flex-col lg:flex-row
                          items-center justify-between
@@ -65,8 +65,7 @@ export default function BlogPosts() {
                 {/* Title */}
                 <h1
                   className="bg-clip-text text-transparent
-                             bg-gradient-to-tl from-black/80 to-[#6f6f75]
-                             dark:from-white dark:to-zinc-500
+                             bg-gradient-to-r from-[#58a6ff] via-[#388bfd] to-[#1f6feb]
                              text-[36px] font-bold tracking-tight
                              mt-3 mb-3 leading-[120%]"
                 >
@@ -78,7 +77,7 @@ export default function BlogPosts() {
                   {post.subtitle && (
                     <>
                       <span
-                        className="text-[#6f6f75] dark:text-zinc-400
+                        className="text-gray-500 dark:text-gray-400
                                    tracking-wide uppercase
                                    text-[14px] font-semibold leading-[160%]"
                       >
@@ -86,7 +85,7 @@ export default function BlogPosts() {
                       </span>
 
                       <span
-                        className="text-[#6f6f75] dark:text-zinc-400
+                        className="text-gray-500 dark:text-gray-400
                                    tracking-[0.1em] uppercase
                                    text-[14px] font-semibold leading-[160%]"
                       >
@@ -96,7 +95,7 @@ export default function BlogPosts() {
                   )}
 
                   <span
-                    className="text-[#6f6f75] dark:text-zinc-400
+                    className="text-gray-500 dark:text-gray-400
                                tracking-wide uppercase
                                text-[14px] font-semibold leading-[160%]"
                   >
@@ -119,21 +118,14 @@ export default function BlogPosts() {
                   <button
                     className="group/button flex items-center justify-center
                                px-6 py-4 rounded-[60px]
-                               bg-white dark:bg-zinc-900
-                               border-2 border-white dark:border-zinc-800
+                               gradient-bg accent-glow
                                font-semibold transition-all duration-300
-                               hover:scale-[1.02]"
+                               hover:opacity-90 hover:scale-[1.02]"
                   >
-                    <span
-                      className="bg-gradient-to-r from-[#74747a] to-[#111]
-                                 dark:from-zinc-400 dark:to-white
-                                 text-transparent bg-clip-text"
-                    >
-                      See the Live
-                    </span>
+                    <span className="text-white font-bold">See the Live</span>
 
                     <MoveRight
-                      className="w-5 h-5 ml-2 transition-transform duration-300
+                      className="w-5 h-5 ml-2 text-white transition-transform duration-300
                                  group-hover/button:translate-x-2"
                     />
                   </button>

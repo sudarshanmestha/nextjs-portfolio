@@ -1,10 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // 1. CRITICAL: Enable class-based dark mode so use-dark-mode can trigger it
-  darkMode: 'class', 
+  darkMode: 'class',
 
   content: [
-    // 2. IMPORTANT: Added "./app/**/*.{js,ts,jsx,tsx}" since your structure uses the App Router
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -13,31 +11,38 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Updated to a neutral monochrome palette
-        primary: {
-          DEFAULT: "#000000", 
-          50: "#f9fafb",
-          100: "#f3f4f6",
-          200: "#e5e7eb",
-          300: "#d1d5db",
-          400: "#9ca3af",
-          500: "#6b7280",
-          600: "#4b5563",
-          700: "#374151",
-          800: "#1f2937",
-          900: "#111827",
+        accent: {
+          DEFAULT:  '#58a6ff',
+          light:    '#79c0ff',
+          dark:     '#0969da',
+          muted:    '#f0f6fc',
+          'dark-muted': '#161b22',
+        },
+        navy: {
+          50:  '#f0f6fc',
+          100: '#dde8f0',
+          200: '#b8d4e8',
+          300: '#7eb5d8',
+          400: '#388bfd',
+          500: '#58a6ff',
+          600: '#1f6feb',
+          700: '#0969da',
+          800: '#1c2333',
+          900: '#161b22',
+          950: '#0d1117',
         },
       },
       animation: {
-        shine: "shine 1s forwards",[cite: 5]
+        shine:   'shine 1s forwards',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
       },
       keyframes: {
         shine: {
-          "0%": { left: "-50%" },
-          "100%": { left: "125%" },
-        },[cite: 5]
+          '0%':   { left: '-50%' },
+          '100%': { left: '125%' },
+        },
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],[cite: 5]
+  plugins: [require('@tailwindcss/typography')],
 }

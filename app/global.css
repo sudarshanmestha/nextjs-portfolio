@@ -2,43 +2,107 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #000000;
-    --border: #e4e4e7;
+    --background:  #f0f6fc;
+    --foreground:  #1c2128;
+    --border:      #d0d7de;
+    --accent:      #0969da;
+    --accent-light:#388bfd;
+    --muted:       #f6f8fa;
+    --card:        #ffffff;
+    --nav-bg:      rgba(240, 246, 252, 0.85);
+    --nav-pill:    #eaeef2;
   }
 
   .dark {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --border: #27272a;
+    --background:  #0d1117;
+    --foreground:  #e6edf3;
+    --border:      #30363d;
+    --accent:      #58a6ff;
+    --accent-light:#79c0ff;
+    --muted:       #161b22;
+    --card:        #161b22;
+    --nav-bg:      rgba(13, 17, 23, 0.88);
+    --nav-pill:    #1c2333;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply transition-colors duration-300;
+    transition: background-color 300ms, color 300ms;
   }
 }
 
-/* Fix for Logo and Login visibility */
 .text-foreground {
   color: var(--foreground);
 }
 
-/* Force the box to ALWAYS have the correct text color for its background */
+/* ── Card system ── */
 .custom-box {
-  background-color: #f4f4f5 !important; /* Zinc-100 */
-  border: 1px solid #e4e4e7 !important;
-  color: #000000 !important; 
+  background-color: #ffffff !important;
+  border: 1px solid #d0d7de !important;
+  color: #1c2128 !important;
 }
 
 .dark .custom-box {
-  background-color: #18181b !important; /* Zinc-900 */
-  border: 1px solid #27272a !important;
-  color: #ffffff !important;
+  background-color: #161b22 !important;
+  border: 1px solid #30363d !important;
+  color: #e6edf3 !important;
 }
 
-/* Helper for the one card you want to stay black/dark in both modes */
+.custom-box:hover {
+  border-color: rgba(88, 166, 255, 0.35) !important;
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.15), 0 8px 32px rgba(88, 166, 255, 0.06);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+
+.dark .custom-box:hover {
+  border-color: rgba(88, 166, 255, 0.3) !important;
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.1), 0 8px 32px rgba(88, 166, 255, 0.08);
+}
+
+/* Inverted / featured card */
 .inverted-card {
-  @apply bg-black text-white dark:bg-white dark:text-black shadow-xl;
+  background: linear-gradient(135deg, #0969da 0%, #1f6feb 50%, #388bfd 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+/* ── Gradient utilities ── */
+.gradient-text {
+  background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 50%, #388bfd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #0969da 0%, #1f6feb 60%, #388bfd 100%);
+}
+
+/* Blue glow on hover */
+.accent-glow:hover {
+  box-shadow: 0 0 28px rgba(88, 166, 255, 0.4);
+}
+
+/* Spotlight radial glow — injected inline from JS */
+.nav-glow-container {
+  position: relative;
+}
+
+.nav-glow-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--nav-glow, transparent);
+  pointer-events: none;
+  transition: background 80ms;
+  z-index: 0;
+}
+
+/* Thin shimmer line */
+.accent-line {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  height: 1px;
 }

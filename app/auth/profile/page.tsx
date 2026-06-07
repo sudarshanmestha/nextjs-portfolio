@@ -147,8 +147,8 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#202225]">
-        <div className="text-[#39FF14] animate-pulse font-bold tracking-widest uppercase">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+        <div className="text-[var(--accent)] animate-pulse font-bold tracking-widest uppercase">
           Loading ReintenSpark Profile...
         </div>
       </div>
@@ -156,26 +156,26 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-12 px-4 bg-[#202225]">
+    <div className="min-h-screen w-full flex flex-col items-center py-12 px-4 bg-[var(--background)]">
       <div className="max-w-4xl w-full space-y-8">
         
-        <div className="flex items-center justify-between border-b border-[#39FF14]/20 pb-4">
-          <h1 className="text-4xl font-bold text-white">
-            User <span className="text-[#39FF14]">Profile</span>
+        <div className="flex items-center justify-between border-b border-[var(--accent)]/20 pb-4">
+          <h1 className="text-4xl font-bold text-[var(--foreground)]">
+            User <span className="text-[var(--accent)]">Profile</span>
           </h1>
-          <Link href="/" className="text-xs font-bold text-neutral-400 hover:text-[#39FF14] transition-colors uppercase tracking-widest">
+          <Link href="/" className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-[var(--accent)] transition-colors uppercase tracking-widest">
             Back to Home
           </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-8">
           {/* Profile Information Card */}
-          <div className="p-8 rounded-2xl bg-black/40 backdrop-blur-md border border-white/5 shadow-xl">
-            <h2 className="text-xl font-bold mb-6 text-white uppercase tracking-wider">Account Information</h2>
+          <div className="p-8 rounded-2xl custom-box shadow-xl">
+            <h2 className="text-xl font-bold mb-6 text-[var(--foreground)] uppercase tracking-wider">Account Information</h2>
 
             {/* Profile-specific feedback */}
             {profileMessage && (
-              <div className="mb-4 p-4 rounded-lg bg-[#39FF14]/10 text-[#39FF14] border border-[#39FF14]/20">
+              <div className="mb-4 p-4 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
                 {profileMessage}
               </div>
             )}
@@ -193,41 +193,41 @@ export default function ProfilePage() {
                     type="text"
                     value={user?.username || ''}
                     disabled
-                    className="w-full px-4 py-3 rounded-lg bg-[#1a1c1e] text-neutral-500 border border-white/5 cursor-not-allowed"
+                    className="w-full px-4 py-3 rounded-lg bg-[var(--muted)] text-gray-400 border border-[var(--border)] cursor-not-allowed"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">First Name</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">First Name</label>
                   <input
                     type="text"
                     value={formData.first_name}
                     onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">Last Name</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">Last Name</label>
                   <input
                     type="text"
                     value={formData.last_name}
                     onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">Email Address</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">Email Address</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                   />
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={updatingProfile}
-                className="px-8 py-3 rounded-full font-bold uppercase tracking-widest bg-[#39FF14] text-black hover:shadow-[0_0_20px_rgba(57,255,20,0.4)] transition-all active:scale-95 disabled:opacity-50"
+                className="px-8 py-3 rounded-full font-bold uppercase tracking-widest gradient-bg accent-glow text-white transition-all active:scale-95 disabled:opacity-50"
               >
                 {updatingProfile ? 'Processing...' : 'Save Changes'}
               </button>
@@ -235,12 +235,12 @@ export default function ProfilePage() {
           </div>
 
           {/* Password Section */}
-          <div className="p-8 rounded-2xl bg-black/40 backdrop-blur-md border border-white/5 shadow-xl">
-            <h2 className="text-xl font-bold mb-6 text-white uppercase tracking-wider">Security</h2>
+          <div className="p-8 rounded-2xl custom-box shadow-xl">
+            <h2 className="text-xl font-bold mb-6 text-[var(--foreground)] uppercase tracking-wider">Security</h2>
 
             {/* Password-specific feedback */}
             {passwordMessage && (
-              <div className="mb-4 p-4 rounded-lg bg-[#39FF14]/10 text-[#39FF14] border border-[#39FF14]/20">
+              <div className="mb-4 p-4 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
                 {passwordMessage}
               </div>
             )}
@@ -253,32 +253,32 @@ export default function ProfilePage() {
             <form onSubmit={handleChangePassword} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">Current Password</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">Current Password</label>
                   <input
                     type="password"
                     value={passwordData.old_password}
                     onChange={(e) => setPasswordData({ ...passwordData, old_password: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">New Password</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">New Password</label>
                   <input
                     type="password"
                     value={passwordData.new_password1}
                     onChange={(e) => setPasswordData({ ...passwordData, new_password1: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-neutral-400">Confirm New</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-gray-500 dark:text-gray-400">Confirm New</label>
                   <input
                     type="password"
                     value={passwordData.new_password2}
                     onChange={(e) => setPasswordData({ ...passwordData, new_password2: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#202225] text-white border border-neutral-700 focus:border-[#39FF14] outline-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-800 text-[var(--foreground)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-all"
                     required
                   />
                 </div>
@@ -286,7 +286,7 @@ export default function ProfilePage() {
               <button
                 type="submit"
                 disabled={updatingPassword}
-                className="px-8 py-3 rounded-full font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all active:scale-95 disabled:opacity-50"
+                className="px-8 py-3 rounded-full font-bold uppercase tracking-widest gradient-bg accent-glow text-white hover:opacity-90 transition-all active:scale-95 disabled:opacity-50"
               >
                 {updatingPassword ? 'Updating...' : 'Update Password'}
               </button>

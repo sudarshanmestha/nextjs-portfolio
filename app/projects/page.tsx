@@ -57,7 +57,7 @@ export default function ProjectPage() {
 
           <h1 data-aos="zoom-out" className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight">
             Engineering <span className="opacity-30">&</span> <br />
-            <span className="underline decoration-gray-400 dark:decoration-zinc-700 underline-offset-8">Artificial Intelligence.</span>
+            <span className="gradient-text">Artificial Intelligence.</span>
           </h1>
 
           <p data-aos="fade-up" className="max-w-2xl mx-auto text-lg opacity-70 leading-relaxed">
@@ -92,7 +92,7 @@ export default function ProjectPage() {
                   <ul className="grid grid-cols-1 gap-2">
                     {project.highlights.map((h, idx) => (
                       <li key={idx} className="flex items-center text-sm opacity-70">
-                        <span className="w-1.5 h-1.5 bg-black dark:bg-white rounded-full mr-3" />
+                        <span className="w-1.5 h-1.5 rounded-full mr-3 bg-gradient-to-r from-[#58a6ff] to-[#388bfd]" />
                         {h}
                       </li>
                     ))}
@@ -102,7 +102,7 @@ export default function ProjectPage() {
                 <div className="pt-6 border-t border-black/10 dark:border-white/10">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/10 px-3 py-1 rounded-lg text-[11px] font-bold">
+                      <span key={t} className="bg-[#58a6ff]/10 border border-[#30363d] text-[var(--accent)] px-3 py-1 rounded-lg text-[11px] font-bold">
                         {t}
                       </span>
                     ))}
@@ -120,7 +120,7 @@ export default function ProjectPage() {
               <h3 className="text-2xl font-bold mb-4">Core Tech</h3>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Python", "Django", "Flask", "FastAPI", "React.js"].map(s => (
-                  <span key={s} className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-xs font-medium">{s}</span>
+                  <span key={s} className="bg-[#58a6ff]/10 border border-[#30363d] text-[var(--accent)] px-3 py-1 rounded-md text-xs font-medium">{s}</span>
                 ))}
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function ProjectPage() {
               <h3 className="text-2xl font-bold mb-4">Cloud</h3>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["AWS", "Docker", "GitHub Actions", "NGINX"].map(s => (
-                  <span key={s} className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-xs font-medium">{s}</span>
+                  <span key={s} className="bg-[#58a6ff]/10 border border-[#30363d] text-[var(--accent)] px-3 py-1 rounded-md text-xs font-medium">{s}</span>
                 ))}
               </div>
             </div>

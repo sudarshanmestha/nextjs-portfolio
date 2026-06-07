@@ -1,15 +1,13 @@
-// app/auth/password-reset/confirm/page.tsx
 'use client';
 
 import React, { useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
 
-// 1. Logic inside a child component
 function ResetPasswordContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  
+
   const uid = searchParams.get('uid');
   const token = searchParams.get('token');
 
@@ -20,7 +18,7 @@ function ResetPasswordContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!uid || !token) return setError("Invalid reset link.");
-    
+
     setLoading(true);
     try {
       if (formData.new_password1 !== formData.new_password2) {
@@ -37,28 +35,40 @@ function ResetPasswordContent() {
     }
   };
 
+  const inputClass = "w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-white dark:bg-zinc-800 text-black dark:text-white focus:border-black dark:focus:border-white outline-none transition-all";
+
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md p-8 rounded-2xl border border-[#39FF14]/10 bg-black/60 backdrop-blur-xl shadow-2xl space-y-6">
-      <h1 className="text-2xl font-bold text-white text-center">Set New <span className="text-[#39FF14]">Password</span></h1>
-      {error && <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-sm rounded-lg text-center">{error}</div>}
+    <form onSubmit={handleSubmit} className="w-full max-w-md p-8 rounded-2xl custom-box shadow-lg space-y-6">
+      <h1 className="text-2xl font-bold text-center">
+        Set New <span className="text-gray-500">Password</span>
+      </h1>
+      {error && (
+        <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-sm rounded-lg text-center">
+          {error}
+        </div>
+      )}
       <input
         type="password"
         placeholder="New Password"
-        className="w-full px-4 py-3 rounded-lg border border-neutral-700 bg-[#202225] text-white focus:border-[#39FF14] outline-none"
+        className={inputClass}
         onChange={(e) => setFormData({...formData, new_password1: e.target.value})}
         required
       />
       <input
         type="password"
         placeholder="Confirm New Password"
-        className="w-full px-4 py-3 rounded-lg border border-neutral-700 bg-[#202225] text-white focus:border-[#39FF14] outline-none"
+        className={inputClass}
         onChange={(e) => setFormData({...formData, new_password2: e.target.value})}
         required
       />
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-4 rounded-full bg-[#39FF14] text-black font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(57,255,20,0.4)] transition-all"
+        className={`w-full py-4 rounded-full font-bold uppercase tracking-widest transition-all ${
+          loading
+            ? 'bg-gray-200 dark:bg-zinc-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+            : 'bg-black text-white dark:bg-white dark:text-black hover:opacity-90 active:scale-95'
+        }`}
       >
         {loading ? 'Updating...' : 'Update Password'}
       </button>
@@ -66,11 +76,10 @@ function ResetPasswordContent() {
   );
 }
 
-// 2. Main page wrapping in Suspense
 export default function PasswordResetConfirmPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#121212]">
-      <Suspense fallback={<div className="text-white">Loading...</div>}>
+    <div className="flex items-center justify-center min-h-screen">
+      <Suspense fallback={<div className="text-gray-500">Loading...</div>}>
         <ResetPasswordContent />
       </Suspense>
     </div>
