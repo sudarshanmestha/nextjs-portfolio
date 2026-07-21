@@ -28,6 +28,11 @@
 │   │   └── posts.tsx
 │   ├── courses
 │   │   └── page.tsx
+│   ├   [slug]
+│   │   └── [lessonSlug]
+│   │   │   └── [lessonSlug]
+│   │   │       │── page.tsx
+│   │   └── page.tsx
 │   ├── global.css
 │   ├── layout.tsx
 │   ├── more
