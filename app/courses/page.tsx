@@ -10,6 +10,11 @@ import 'aos/dist/aos.css';
 // NOTE: adjust this import path to wherever api.ts actually lives in your project
 import { api, Category, Course } from '@/lib/api';
 
+// Local extension so we don't need to modify the shared Course type in lib/api.ts.
+// If you'd rather add lesson_count directly to Course in lib/api.ts, you can
+// remove this type and just use Course everywhere below.
+type CourseWithLessons = Course & { lesson_count?: number };
+
 const CATEGORY_IMAGES: Record<string, string> = {
   dsa: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80',
   'data-science': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80',
@@ -22,7 +27,7 @@ const FALLBACK_IMAGE =
 const CoursePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState<Category[]>([]);
-  const [courses, setCourses] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<CourseWithLessons[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
