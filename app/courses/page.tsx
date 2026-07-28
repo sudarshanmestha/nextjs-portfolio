@@ -15,12 +15,6 @@ import { api, Category, Course } from '@/lib/api';
 // remove this type and just use Course everywhere below.
 type CourseWithLessons = Course & { lesson_count?: number };
 
-const CATEGORY_IMAGES: Record<string, string> = {
-  dsa: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80',
-  'data-science': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80',
-  'agentic-ai': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80',
-  django: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&q=80',
-};
 const FALLBACK_IMAGE =
   'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80';
 
@@ -76,48 +70,40 @@ const CoursePage = () => {
                 <div className="flex flex-col space-y-4 mb-12" data-aos="fade-up">
                   <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">Courses</h1>
                   <p className="text-xl opacity-70">
-                    Master Software Development from basics to advanced. Hare Krishna
+                    Master Your Skill Development from basics to advanced. Hare Krishna
                   </p>
                 </div>
 
-                {/* Category Cards Section */}
-                <div className="flex gap-5 mb-12 overflow-x-auto pb-4 no-scrollbar">
-                  {/* "All Courses" Tile */}
-                  <div
+                {/* Category Filter Pills */}
+                <div className="flex flex-wrap gap-3 mb-12" data-aos="fade-up">
+                  <button
+                    type="button"
                     onClick={() => setSelectedCategory('all')}
-                    className={`cursor-pointer custom-box min-w-[250px] h-[180px] rounded-xl flex items-center justify-center transition-all duration-300 ${
+                    className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
                       selectedCategory === 'all'
-                        ? 'ring-2 ring-black dark:ring-white scale-95'
-                        : 'opacity-80 hover:opacity-100'
+                        ? 'bg-black text-white dark:bg-white dark:text-black border-transparent'
+                        : 'bg-transparent text-current border-gray-300 dark:border-zinc-700 opacity-70 hover:opacity-100 hover:border-gray-400 dark:hover:border-zinc-500'
                     }`}
                   >
-                    <div className="text-center">
-                      <p className="font-bold text-lg">All Courses</p>
-                      <p className="text-sm opacity-60">
-                        {selectedCategory === 'all' ? courses.length : ''} courses
-                      </p>
-                    </div>
-                  </div>
+                    All Courses
+                    {selectedCategory === 'all' && (
+                      <span className="ml-2 opacity-70">({courses.length})</span>
+                    )}
+                  </button>
 
                   {categories.map((cat) => (
-                    <div
+                    <button
                       key={cat.id}
+                      type="button"
                       onClick={() => setSelectedCategory(cat.slug)}
-                      className={`cursor-pointer custom-box min-w-[250px] rounded-xl overflow-hidden transition-all duration-300 ${
+                      className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
                         selectedCategory === cat.slug
-                          ? 'ring-2 ring-black dark:ring-white scale-95'
-                          : 'opacity-80 hover:opacity-100'
+                          ? 'bg-black text-white dark:bg-white dark:text-black border-transparent'
+                          : 'bg-transparent text-current border-gray-300 dark:border-zinc-700 opacity-70 hover:opacity-100 hover:border-gray-400 dark:hover:border-zinc-500'
                       }`}
                     >
-                      <img
-                        src={CATEGORY_IMAGES[cat.slug] || FALLBACK_IMAGE}
-                        alt={cat.name}
-                        className="w-full h-32 object-cover opacity-80"
-                      />
-                      <div className="p-4">
-                        <p className="font-bold text-sm truncate">{cat.name}</p>
-                      </div>
-                    </div>
+                      {cat.name}
+                    </button>
                   ))}
                 </div>
 
