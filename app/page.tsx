@@ -294,8 +294,8 @@ export default function Page() {
             </form>
             <div data-aos="fade-left" className="custom-box rounded-xl p-6 space-y-4 text-sm opacity-70">
               <p>Prefer email or a quick call? Reach out directly:</p>
-              <p>Email: hello@example.com</p>
-              <p>Phone: +1 (000) 000-0000</p>
+              <p>Email: justpython.india@gmail.com</p>
+              <p>Phone: +91 8762113007</p>
               <p>We usually respond within one business day.</p>
             </div>
           </div>
